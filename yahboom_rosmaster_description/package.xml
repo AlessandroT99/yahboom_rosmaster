@@ -3,11 +3,12 @@
 <package format="3">
   <name>yahboom_rosmaster_description</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>Contains the robot description files that define the physical aspects of a robot, including its geometry, kinematics, dynamics and visual properties.</description>
   <maintainer email="ti.alex.02@gmail.com">ale</maintainer>
   <license>BSD-3-Clause</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
+  <build_depend>urdf_tutorial</build_depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
