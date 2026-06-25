@@ -32,12 +32,6 @@ colcon build --packages-select yahboom_rosmaster yahboom_rosmaster_description
 source install/setup.bash
 ```
 
-## Notes
-
-- `yahboom_rosmaster` is a metapackage and does not provide source code directly.
-- `yahboom_rosmaster_description` is currently a placeholder package intended for robot description files and assets.
-- The package `src/` folders are currently empty. Add source files, URDFs, meshes, and launch assets as needed.
-
 ## License
 
 BSD-3-Clause
