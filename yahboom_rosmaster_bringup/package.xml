@@ -1,17 +1,13 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>yahboom_rosmaster</name>
+  <name>yahboom_rosmaster_bringup</name>
   <version>0.0.0</version>
-  <description>ROSMaster series robot by Yahboom (metapackage)</description>
-  <maintainer email="ti.alex.02@gmail.com">ale</maintainer>
+  <description>Launch files and basic nodes for starting yahboom rosmaster robot drivers</description>
+  <maintainer email="ti.alex.02@gmail.com">ubuntu</maintainer>
   <license>BSD-3-Clause</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
-  <exec_depend>yahboom_rosmaster_description</exec_depend>
-  <exec_depend>yahboom_rosmaster_bringup</exec_depend>
-  <exec_depend>yahboom_rosmaster_gazebo</exec_depend>
-  <exec_depend>yahboom_rosmaster_system_tests</exec_depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
