@@ -7,6 +7,8 @@ A ROS 2 repository for the Yahboom ROSMaster robot series.
 This repository contains the ROS 2 package stack for the Yahboom ROSMaster robot.
 The root workspace is a metapackage wrapper around the robot description package.
 
+![Yahboom ROSMaster X3](.images/yahboom_master_x3_cafe.png)
+
 ## Package layout
 
 - `yahboom_rosmaster/`
@@ -51,7 +53,8 @@ source install/setup.bash
 
 * Launch the simulation with gazebo
 ```bash
-bash ~ros2_ws/src/yahboom_rosmaster/yahboom_rosmaster_bringup/scripts/rosmaster_x3_gazebo.sh
+cd  ~/ros2_ws
+bash src/oom_rosmaster/yahboom_rosmaster_bringup/scripts/rosmaster_x3_gazebo.sh
 ```
 
 * Move it on its left
