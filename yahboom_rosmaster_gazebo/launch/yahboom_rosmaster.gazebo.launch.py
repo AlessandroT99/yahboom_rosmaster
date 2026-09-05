@@ -5,8 +5,8 @@ Launch Gazebo simulation with a robot.
 This launch file sets up a complete ROS 2 simulation environment with Gazebo for
 a Yahboom ROSMASTER robot: https://github.com/YahboomTechnology
 
-:author: Addison Sears-Collins
-:date: November 21, 2024
+:author: Alessandro Tiozzo
+:date: September 5, 2026
 """
 
 import os
@@ -14,6 +14,7 @@ from launch import LaunchDescription
 from launch.actions import (
     AppendEnvironmentVariable,
     DeclareLaunchArgument,
+    ExecuteProcess,
     IncludeLaunchDescription
 )
 from launch.conditions import IfCondition
@@ -98,7 +99,8 @@ def generate_launch_description():
 
     declare_headless_cmd = DeclareLaunchArgument(
         name='headless',
-        default_value='False',
+        default_value='false',
+        choices=['true', 'false'],
         description='Whether to execute gzclient (visualization)')
 
     declare_robot_name_cmd = DeclareLaunchArgument(
@@ -213,15 +215,31 @@ def generate_launch_description():
     # Start Gazebo
     start_gazebo_server_cmd = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            os.path.join(pkg_ros_gz_sim, 'launch', 'gz_sim.launch.py')),
-        launch_arguments=[('gz_args', [' -r -s -v 4 ', world_path])])
+            os.path.join(pkg_ros_gz_sim, 'launch', 'gz_sim.launch.py')
+        ),
+        launch_arguments={
+            'gz_args': [
+                '-r ',
+                '-v 4 ',
+                '-s ', 
+                world_path
+            ]
+        }.items()
+    )
 
     # Start Gazebo client (GUI) if not headless
     start_gazebo_client_cmd = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            os.path.join(pkg_ros_gz_sim, 'launch', 'gz_sim.launch.py')),
-        launch_arguments={'gz_args': ['-g ']}.items(),
-        condition=IfCondition(PythonExpression(['not ', headless])))
+            os.path.join(pkg_ros_gz_sim, 'launch', 'gz_sim.launch.py')
+        ),
+        launch_arguments={
+            'gz_args': [
+                '-g ',
+                '--render-engine ogre '
+            ]
+        }.items(),
+        condition=IfCondition(PythonExpression(['not ', headless]))
+    )   
 
     # Bridge ROS topics and Gazebo messages for establishing communication
     start_gazebo_ros_bridge_cmd = Node(
@@ -243,22 +261,35 @@ def generate_launch_description():
             ('/cam_1/image', '/cam_1/color/image_raw')
         ])
 
-    # Spawn the robot
-    start_gazebo_ros_spawner_cmd = Node(
-        package='ros_gz_sim',
-        executable='create',
-        output='screen',
-        arguments=[
-            '-topic', '/robot_description',
-            '-name', robot_name,
-            '-allow_renaming', 'true',
-            '-x', x,
-            '-y', y,
-            '-z', z,
-            '-R', roll,
-            '-P', pitch,
-            '-Y', yaw
-        ])
+    # Polling Spawner: Check native Gazebo service availability before spawning the robot entity
+    start_gazebo_ros_spawner_cmd = ExecuteProcess(
+        cmd=[
+            'bash', '-c',
+            (
+                'until gz service -l | grep -q "/create"; do '
+                '  echo "Waiting for Gazebo create service..."; '
+                '  sleep 3; '
+                'done; '
+                'echo "Gazebo service detected! Spawning entity..."; '
+                'ros2 run ros_gz_sim create '
+                '-topic "$1" '
+                '-name "$2" '
+                '-allow_renaming "$3" '
+                '-x "$4" -y "$5" -z "$6" -R "$7" -P "$8" -Y "$9"'
+            ),
+            '_',
+            '/robot_description',
+            robot_name,
+            'true',
+            x,
+            y,
+            z,
+            roll,
+            pitch,
+            yaw
+        ],
+        output='screen'
+    )
 
     # Create the launch description and populate
     ld = LaunchDescription()

@@ -49,6 +49,36 @@ colcon build --packages-select yahboom_rosmaster yahboom_rosmaster_description
 source install/setup.bash
 ```
 
+### 🍏 Running under macOS (Apple Silicon / UTM)
+If you are running this simulation inside an Ubuntu Linux virtual machine on Apple Silicon (M1/M2/M3/M4) via UTM with VirGL hardware acceleration enabled, you need to set specific Mesa, Ogre, and Qt environment variables to prevent a black/blank Gazebo viewport and application crashes.
+
+Add the following environment variables to your shell configuration (~/.bashrc):
+```bash
+# Fix blank viewport issue under Mesa VirGL by forcing copy render targets
+export OGRE_RTT_MODE=Copy
+
+# Force Mesa drivers to report OpenGL 3.3 and GLSL 3.30 support required by Gazebo
+export MESA_GL_VERSION_OVERRIDE=3.3
+export MESA_GLSL_VERSION_OVERRIDE=330
+
+# Fix depth-buffer z-fighting flickering under Mesa VirGL
+export MESA_GL_DIRTY_PIXMAPS=1
+export MESA_LOADER_DRIVER_OVERRIDE=virgl
+
+# Ensure X11/XWayland rendering stability for Qt applications inside UTM
+export QT_QPA_PLATFORM=xcb
+
+# Bind Gazebo transport loopback explicitly to single-host local IPC
+export GZ_IP=127.0.0.1
+export GZ_PARTITION=gazebo_local
+```
+
+After adding these, reload your shell configuration:
+
+```bash
+source ~/.bashrc
+```
+
 ## How to use
 
 * Launch the simulation with gazebo
