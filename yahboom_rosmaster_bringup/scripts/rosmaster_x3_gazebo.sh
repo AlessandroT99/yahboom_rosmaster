@@ -16,7 +16,7 @@ trap 'cleanup' SIGINT SIGTERM
 echo "Launching Gazebo simulation..."
 ros2 launch yahboom_rosmaster_gazebo yahboom_rosmaster.gazebo.launch.py \
     enable_odom_tf:=true \
-    headless:=True \
+    headless:=true \
     load_controllers:=true \
     world_file:=cafe_lowSpecs.world \
     use_rviz:=true \
