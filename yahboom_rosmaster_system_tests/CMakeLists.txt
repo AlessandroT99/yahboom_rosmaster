@@ -9,6 +9,7 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rclcpp_action REQUIRED)
+find_package(rcl_interfaces REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 
@@ -22,8 +23,20 @@ ament_target_dependencies(square_mecanum_controller
   std_msgs
 )
 
+add_executable(mecanum_parameters_node
+  src/mecanum_parameters_node.cpp
+)
+
+ament_target_dependencies(mecanum_parameters_node
+  rclcpp
+  geometry_msgs
+  std_msgs
+  rcl_interfaces
+)
+
 install (TARGETS
   square_mecanum_controller
+  mecanum_parameters_node
   DESTINATION lib/${PROJECT_NAME}
 )
 
