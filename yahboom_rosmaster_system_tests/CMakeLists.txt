@@ -13,6 +13,10 @@ find_package(rcl_interfaces REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 
+install(DIRECTORY launch config
+  DESTINATION share/${PROJECT_NAME}
+)
+
 add_executable(square_mecanum_controller
   src/square_mecanum_controller.cpp
 )

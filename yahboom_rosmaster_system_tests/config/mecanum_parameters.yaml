@@ -1,0 +1,8 @@
+# Desired parameter values
+/mecanum_parameters_node:
+  ros__parameters:
+    robot_name: "New Alessandro Bot"
+    robot_id: 5
+    target_linear_velocity_x: -0.2
+    target_linear_velocity_y: 0.0
+    target_angular_velocity: 0.23
