@@ -99,8 +99,8 @@ def generate_launch_description():
 
     declare_headless_cmd = DeclareLaunchArgument(
         name='headless',
-        default_value='false',
-        choices=['true', 'false'],
+        default_value='False',
+        choices=['True', 'False'],
         description='Whether to execute gzclient (visualization)')
 
     declare_robot_name_cmd = DeclareLaunchArgument(
