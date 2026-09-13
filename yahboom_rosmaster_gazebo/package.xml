@@ -4,7 +4,7 @@
   <name>yahboom_rosmaster_gazebo</name>
   <version>0.0.0</version>
   <description>Gazebo simulation support for yahboom rosmaster robots including worlds and launch files</description>
-  <maintainer email="ti.alex.02@gmail.com">ubuntu</maintainer>
+  <maintainer email="fake_email@email.com">ubuntu</maintainer>
   <license>BSD-3-Clause</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
