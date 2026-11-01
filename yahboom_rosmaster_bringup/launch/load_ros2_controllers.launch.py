@@ -7,10 +7,10 @@ for operating the mechanum wheel robot in a specific sequence.
 
 Launched Controllers:
     1. Joint State Broadcaster: Publishes joint states to /joint_states
-    2. mechanum Drive Controller: Controls the robot's mechanum drive movements via ~/cmd_vel
+    2. ROS2 Mecanum Drive Controller: Controls the robot's mecanum drive movements via ~/cmd_vel
 
-:author: Addison Sears-Collins
-:date: November 20, 2024
+:author: Alessandro Tiozzo
+:date: November 1, 2026
 """
 
 from launch import LaunchDescription
@@ -28,9 +28,9 @@ def generate_launch_description():
         LaunchDescription: Launch description containing sequenced controller starts
     """
     # Start mechanum drive controller
-    start_mechanum_drive_controller_cmd = ExecuteProcess(
+    start_mecanum_drive_controller_cmd = ExecuteProcess(
         cmd=['ros2', 'control', 'load_controller', '--set-state', 'active',
-             'mechanum_drive_controller'],
+             'mecanum_drive_controller'],
         output='screen'
     )
 
@@ -51,7 +51,7 @@ def generate_launch_description():
     load_joint_state_broadcaster_cmd = RegisterEventHandler(
         event_handler=OnProcessExit(
             target_action=start_joint_state_broadcaster_cmd,
-            on_exit=[start_mechanum_drive_controller_cmd]))
+            on_exit=[start_mecanum_drive_controller_cmd]))
 
     # Create and populate the launch description
     ld = LaunchDescription()

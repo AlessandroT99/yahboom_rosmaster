@@ -10,7 +10,7 @@
  *   None
  *
  * Publishing Topics:
- *   /mechanum_drive_controller/cmd_vel (geometry_msgs/TwistStamped): Velocity command for the robot
+ *   /mecanum_drive_controller/reference (geometry_msgs/TwistStamped): Velocity command for the robot
  *   (linear.x, linear.y, and angular.z)
  *
  * Parameters:
@@ -68,8 +68,8 @@ public:
     param_callback_handle_ = this->add_on_set_parameters_callback(
       std::bind(&mechanumParameters::parameter_change_callback, this, std::placeholders::_1));
 
-    // Create a publisher for the /mechanum_drive_controller/cmd_vel topic
-    velocity_publisher_ = this->create_publisher<geometry_msgs::msg::TwistStamped>("/mechanum_drive_controller/cmd_vel", 10);
+    // Publish stamped velocity references to the official mecanum controller.
+    velocity_publisher_ = this->create_publisher<geometry_msgs::msg::TwistStamped>("/mecanum_drive_controller/reference", 10);
 
     // Create a timer that will call the publish_velocity function every 0.5 seconds (2 Hz)
     timer_ = this->create_wall_timer(std::chrono::milliseconds(500), std::bind(&mechanumParameters::publish_velocity, this));
