@@ -10,7 +10,7 @@
  *   None
  *
  * Publishing Topics:
- *   /mecanum_drive_controller/cmd_vel (geometry_msgs/TwistStamped):
+ *   /mechanum_drive_controller/cmd_vel (geometry_msgs/TwistStamped):
  *     Timestamped velocity command for the robot:
  *     - header.stamp: Current ROS time when command is published
  *     - header.frame_id: "base_link" (robot's base frame)
@@ -76,7 +76,7 @@ public:
 
     // Create publisher for timestamped velocity commands
     cmd_vel_publisher_ = this->create_publisher<geometry_msgs::msg::TwistStamped>(
-      "/mecanum_drive_controller/cmd_vel",
+      "/mechanum_drive_controller/cmd_vel",
       10);  // Queue size of 10 messages
   }
 

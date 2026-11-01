@@ -1,8 +1,8 @@
 /**
- * @file mecanum_parameters_node.cpp
+ * @file mechanum_parameters_node.cpp
  * @brief This ROS 2 node demonstrates how to declare parameters and publish velocity messages.
  *
- * This program implements a ROS 2 node that declares parameters for a mecanum wheel robot 
+ * This program implements a ROS 2 node that declares parameters for a mechanum wheel robot 
  * and publishes velocity commands. It demonstrates parameter declaration, callback
  * registration for parameter changes, and publishing to the velocity topic.
  *
@@ -10,7 +10,7 @@
  *   None
  *
  * Publishing Topics:
- *   /mecanum_drive_controller/cmd_vel (geometry_msgs/TwistStamped): Velocity command for the robot
+ *   /mechanum_drive_controller/cmd_vel (geometry_msgs/TwistStamped): Velocity command for the robot
  *   (linear.x, linear.y, and angular.z)
  *
  * Parameters:
@@ -30,19 +30,19 @@
 #include <geometry_msgs/msg/twist_stamped.hpp>
 
 /**
- * @class MecanumParameters
+ * @class mechanumParameters
  * @brief A ROS 2 node that demonstrates parameter handling and velocity publishing.
  */
-class MecanumParameters : public rclcpp::Node
+class mechanumParameters : public rclcpp::Node
 {
 public:
   /**
-   * @brief Constructor for the MecanumParameters node.
+   * @brief Constructor for the mechanumParameters node.
    *
    * Initializes the node, declares parameters, sets up parameter change callback,
    * and creates a publisher and timer for velocity messages.
    */
-  MecanumParameters() : Node("mecanum_parameters_node")
+  mechanumParameters() : Node("mechanum_parameters_node")
   {
     // Describe parameters
     rcl_interfaces::msg::ParameterDescriptor robot_name_descriptor;
@@ -66,13 +66,13 @@ public:
     // Register a callback function for parameter changes using the newer method
     // This will triggers the callback whenever a parameter is changed
     param_callback_handle_ = this->add_on_set_parameters_callback(
-      std::bind(&MecanumParameters::parameter_change_callback, this, std::placeholders::_1));
+      std::bind(&mechanumParameters::parameter_change_callback, this, std::placeholders::_1));
 
-    // Create a publisher for the /mecanum_drive_controller/cmd_vel topic
-    velocity_publisher_ = this->create_publisher<geometry_msgs::msg::TwistStamped>("/mecanum_drive_controller/cmd_vel", 10);
+    // Create a publisher for the /mechanum_drive_controller/cmd_vel topic
+    velocity_publisher_ = this->create_publisher<geometry_msgs::msg::TwistStamped>("/mechanum_drive_controller/cmd_vel", 10);
 
     // Create a timer that will call the publish_velocity function every 0.5 seconds (2 Hz)
-    timer_ = this->create_wall_timer(std::chrono::milliseconds(500), std::bind(&MecanumParameters::publish_velocity, this));
+    timer_ = this->create_wall_timer(std::chrono::milliseconds(500), std::bind(&mechanumParameters::publish_velocity, this));
   }
 
 private:
@@ -120,7 +120,7 @@ private:
   }
 
   /**
-   * @brief Publishes velocity messages to the /mecanum_drive_controller/cmd_vel topic.
+   * @brief Publishes velocity messages to the /mechanum_drive_controller/cmd_vel topic.
    *
    * This function is called periodically by the timer to publish the current
    * target linear and angular velocities.
@@ -149,7 +149,7 @@ private:
 /**
  * @brief Main function to start the ROS 2 node.
  *
- * Initializes ROS 2, creates an instance of the MecanumParameters node,
+ * Initializes ROS 2, creates an instance of the mechanumParameters node,
  * and keeps it running to process callbacks and publish messages.
  *
  * @param argc Number of command-line arguments.
@@ -159,8 +159,8 @@ private:
 int main(int argc, char ** argv)
 {
   rclcpp::init(argc, argv);
-  auto mecanum_parameters_node = std::make_shared<MecanumParameters>();
-  rclcpp::spin(mecanum_parameters_node);
+  auto mechanum_parameters_node = std::make_shared<mechanumParameters>();
+  rclcpp::spin(mechanum_parameters_node);
   rclcpp::shutdown();
   return 0;
 }

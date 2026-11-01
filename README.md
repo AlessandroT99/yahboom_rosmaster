@@ -89,7 +89,7 @@ bash src/oom_rosmaster/yahboom_rosmaster_bringup/scripts/rosmaster_x3_gazebo.sh
 
 * Move it on its left
 ```bash
-ros2 topic pub /mecanum_drive_controller/cmd_vel geometry_msgs/msg/TwistStamped "{header: {stamp: {sec: $(date +%s), nanosec: 0}, frame_id: ''}, twist: {linear: {x: 0.0, y: 0.1, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.0}}}"
+ros2 topic pub /mechanum_drive_controller/cmd_vel geometry_msgs/msg/TwistStamped "{header: {stamp: {sec: $(date +%s), nanosec: 0}, frame_id: ''}, twist: {linear: {x: 0.0, y: 0.1, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.0}}}"
 ```
 
 ## License

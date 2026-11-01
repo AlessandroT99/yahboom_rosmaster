@@ -8,32 +8,32 @@
     <xacro:arg name="use_gazebo" default="false"/>
 
     <xacro:include filename="$(find yahboom_rosmaster_description)/urdf/mech/rosmaster_x3_base.urdf.xacro"/>
-    <xacro:include filename="$(find yahboom_rosmaster_description)/urdf/mech/mecanum_wheel.urdf.xacro"/>
+    <xacro:include filename="$(find yahboom_rosmaster_description)/urdf/mech/mechanum_wheel.urdf.xacro"/>
     <xacro:include filename="$(find yahboom_rosmaster_description)/urdf/sensors/rgbd_camera.urdf.xacro"/>
     <xacro:include filename="$(find yahboom_rosmaster_description)/urdf/sensors/lidar.urdf.xacro"/>
     <xacro:include filename="$(find yahboom_rosmaster_description)/urdf/sensors/imu.urdf.xacro"/>
 
     <xacro:rosmaster_x3_base prefix="$(arg prefix)"/>
 
-    <xacro:mecanum_wheel
+    <xacro:mechanum_wheel
       prefix="$(arg prefix)"
       side="front_left"
       x_reflect="1"
       y_reflect="1"/>
 
-    <xacro:mecanum_wheel
+    <xacro:mechanum_wheel
       prefix="$(arg prefix)"
       side="front_right"
       x_reflect="1"
       y_reflect="-1"/>
 
-    <xacro:mecanum_wheel
+    <xacro:mechanum_wheel
       prefix="$(arg prefix)"
       side="back_left"
       x_reflect="-1"
       y_reflect="1"/>
 
-    <xacro:mecanum_wheel
+    <xacro:mechanum_wheel
       prefix="$(arg prefix)"
       side="back_right"
       x_reflect="-1"

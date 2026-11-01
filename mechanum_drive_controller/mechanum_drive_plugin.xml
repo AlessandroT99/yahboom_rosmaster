@@ -1,0 +1,7 @@
+<library path="mechanum_drive_controller">
+  <class name="mechanum_drive_controller/mechanumDriveController" type="mechanum_drive_controller::mechanumDriveController" base_class_type="controller_interface::ControllerInterface">
+  <description>
+    The mechanum drive controller transforms linear (x, y) and angular velocity messages into signals for each of the four mechanum wheels, enabling omnidirectional movement of the robot.
+  </description>
+  </class>
+</library>

@@ -18,21 +18,21 @@ install(DIRECTORY launch config
   DESTINATION share/${PROJECT_NAME}
 )
 
-add_executable(square_mecanum_controller
-  src/square_mecanum_controller.cpp
+add_executable(square_mechanum_controller
+  src/square_mechanum_controller.cpp
 )
 
-ament_target_dependencies(square_mecanum_controller
+ament_target_dependencies(square_mechanum_controller
   rclcpp
   geometry_msgs
   std_msgs
 )
 
-add_executable(mecanum_parameters_node
-  src/mecanum_parameters_node.cpp
+add_executable(mechanum_parameters_node
+  src/mechanum_parameters_node.cpp
 )
 
-ament_target_dependencies(mecanum_parameters_node
+ament_target_dependencies(mechanum_parameters_node
   rclcpp
   geometry_msgs
   std_msgs
@@ -72,8 +72,8 @@ ament_target_dependencies(set_cleaning_state_service
 )
 
 install (TARGETS
-  square_mecanum_controller
-  mecanum_parameters_node
+  square_mechanum_controller
+  mechanum_parameters_node
   timed_rotation_action_server
   timed_rotation_action_client
   set_cleaning_state_service

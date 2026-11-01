@@ -1,4 +1,4 @@
-mecanum_drive_controller:
+mechanum_drive_controller:
   front_left_joint_name: {
     type: string,
     default_value: "front_left_wheel_joint",

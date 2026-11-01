@@ -1,17 +1,17 @@
 /**
- * @file mecanum_drive_controller.hpp
- * @brief ROS 2 controller for mecanum drive mobile robots
+ * @file mechanum_drive_controller.hpp
+ * @brief ROS 2 controller for mechanum drive mobile robots
  *
- * This controller handles the kinematics of a mecanum drive robot with four mecanum wheels.
+ * This controller handles the kinematics of a mechanum drive robot with four mechanum wheels.
  * It subscribes to velocity commands and converts them into individual wheel velocities,
- * taking into account the unique properties of mecanum wheels that allow omnidirectional movement.
+ * taking into account the unique properties of mechanum wheels that allow omnidirectional movement.
  *
  * @author Addison Sears-Collins
  * @date May 15, 2025
  */
 
-#ifndef MECANUM_DRIVE_CONTROLLER__MECANUM_DRIVE_CONTROLLER_HPP_
-#define MECANUM_DRIVE_CONTROLLER__MECANUM_DRIVE_CONTROLLER_HPP_
+#ifndef mechanum_DRIVE_CONTROLLER__mechanum_DRIVE_CONTROLLER_HPP_
+#define mechanum_DRIVE_CONTROLLER__mechanum_DRIVE_CONTROLLER_HPP_
 
 #include <chrono>
 #include <cmath>
@@ -24,10 +24,10 @@
 
 // ROS 2 Controller interface
 #include "controller_interface/controller_interface.hpp"
-// Custom headers for mecanum drive functionality
-#include "mecanum_drive_controller/odometry.hpp"
-#include "mecanum_drive_controller/speed_limiter.hpp"
-#include "mecanum_drive_controller/visibility_control.h"
+// Custom headers for mechanum drive functionality
+#include "mechanum_drive_controller/odometry.hpp"
+#include "mechanum_drive_controller/speed_limiter.hpp"
+#include "mechanum_drive_controller/visibility_control.h"
 // ROS 2 message types
 #include "geometry_msgs/msg/twist_stamped.hpp"
 #include "nav_msgs/msg/odometry.hpp"
@@ -39,9 +39,9 @@
 #include "tf2_msgs/msg/tf_message.hpp"
 
 // Auto-generated parameters
-#include <mecanum_drive_controller/mecanum_drive_controller_parameters.hpp>
+#include <mechanum_drive_controller/mechanum_drive_controller_parameters.hpp>
 
-namespace mecanum_drive_controller
+namespace mechanum_drive_controller
 {
 
 // Wheel position indices
@@ -54,35 +54,35 @@ enum WheelIndex : size_t
 };
 
 /**
- * @brief Controller class for mecanum drive robots
+ * @brief Controller class for mechanum drive robots
  *
- * This class implements a controller for robots with mecanum wheels, allowing for
+ * This class implements a controller for robots with mechanum wheels, allowing for
  * omnidirectional movement including lateral motion. It handles the conversion
  * between velocity commands and individual wheel velocities.
  */
-class MecanumDriveController : public controller_interface::ControllerInterface
+class mechanumDriveController : public controller_interface::ControllerInterface
 {
   using Twist = geometry_msgs::msg::TwistStamped;
 
 public:
   /**
-   * @brief Constructor for the mecanum drive controller
+   * @brief Constructor for the mechanum drive controller
    */
-  MECANUM_DRIVE_CONTROLLER_PUBLIC
-  MecanumDriveController();
+  mechanum_DRIVE_CONTROLLER_PUBLIC
+  mechanumDriveController();
 
   /**
    * @brief Get the command interface configuration
    * @return Interface configuration for the controller's command interfaces
    */
-  MECANUM_DRIVE_CONTROLLER_PUBLIC
+  mechanum_DRIVE_CONTROLLER_PUBLIC
   controller_interface::InterfaceConfiguration command_interface_configuration() const override;
 
   /**
    * @brief Get the state interface configuration
    * @return Interface configuration for the controller's state interfaces
    */
-  MECANUM_DRIVE_CONTROLLER_PUBLIC
+  mechanum_DRIVE_CONTROLLER_PUBLIC
   controller_interface::InterfaceConfiguration state_interface_configuration() const override;
 
   /**
@@ -91,7 +91,7 @@ public:
    * @param period Time since the last update
    * @return Success/failure of update
    */
-  MECANUM_DRIVE_CONTROLLER_PUBLIC
+  mechanum_DRIVE_CONTROLLER_PUBLIC
   controller_interface::return_type update(
     const rclcpp::Time & time, const rclcpp::Duration & period) override;
 
@@ -99,7 +99,7 @@ public:
    * @brief Initialization function for the controller
    * @return Success/failure of initialization
    */
-  MECANUM_DRIVE_CONTROLLER_PUBLIC
+  mechanum_DRIVE_CONTROLLER_PUBLIC
   controller_interface::CallbackReturn on_init() override;
 
   /**
@@ -107,7 +107,7 @@ public:
    * @param previous_state Previous state of the controller
    * @return Success/failure of configuration
    */
-  MECANUM_DRIVE_CONTROLLER_PUBLIC
+  mechanum_DRIVE_CONTROLLER_PUBLIC
   controller_interface::CallbackReturn on_configure(
     const rclcpp_lifecycle::State & previous_state) override;
 
@@ -116,7 +116,7 @@ public:
    * @param previous_state Previous state of the controller
    * @return Success/failure of activation
    */
-  MECANUM_DRIVE_CONTROLLER_PUBLIC
+  mechanum_DRIVE_CONTROLLER_PUBLIC
   controller_interface::CallbackReturn on_activate(
     const rclcpp_lifecycle::State & previous_state) override;
 
@@ -125,7 +125,7 @@ public:
    * @param previous_state Previous state of the controller
    * @return Success/failure of deactivation
    */
-  MECANUM_DRIVE_CONTROLLER_PUBLIC
+  mechanum_DRIVE_CONTROLLER_PUBLIC
   controller_interface::CallbackReturn on_deactivate(
     const rclcpp_lifecycle::State & previous_state) override;
 
@@ -134,7 +134,7 @@ public:
    * @param previous_state Previous state of the controller
    * @return Success/failure of cleanup
    */
-  MECANUM_DRIVE_CONTROLLER_PUBLIC
+  mechanum_DRIVE_CONTROLLER_PUBLIC
   controller_interface::CallbackReturn on_cleanup(
     const rclcpp_lifecycle::State & previous_state) override;
 
@@ -143,7 +143,7 @@ public:
    * @param previous_state Previous state of the controller
    * @return Success/failure of error handling
    */
-  MECANUM_DRIVE_CONTROLLER_PUBLIC
+  mechanum_DRIVE_CONTROLLER_PUBLIC
   controller_interface::CallbackReturn on_error(
     const rclcpp_lifecycle::State & previous_state) override;
 
@@ -152,7 +152,7 @@ public:
    * @param previous_state Previous state of the controller
    * @return Success/failure of shutdown
    */
-  MECANUM_DRIVE_CONTROLLER_PUBLIC
+  mechanum_DRIVE_CONTROLLER_PUBLIC
   controller_interface::CallbackReturn on_shutdown(
     const rclcpp_lifecycle::State & previous_state) override;
 
@@ -192,7 +192,7 @@ protected:
     const std::string & wheel_name,
     size_t wheel_index);
 
-  // Fixed array of 4 wheel handles for the mecanum drive
+  // Fixed array of 4 wheel handles for the mechanum drive
   std::array<WheelHandle, 4> wheel_handles_;  // Handles for each wheel
 
   // ROS 2 parameter handling
@@ -253,5 +253,5 @@ protected:
    */
   void halt();
 };
-}  // namespace mecanum_drive_controller
-#endif  // MECANUM_DRIVE_CONTROLLER__MECANUM_DRIVE_CONTROLLER_HPP_
+}  // namespace mechanum_drive_controller
+#endif  // mechanum_DRIVE_CONTROLLER__mechanum_DRIVE_CONTROLLER_HPP_

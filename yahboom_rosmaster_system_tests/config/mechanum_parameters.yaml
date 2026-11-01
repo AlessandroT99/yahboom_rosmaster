@@ -1,5 +1,5 @@
 # Desired parameter values
-/mecanum_parameters_node:
+/mechanum_parameters_node:
   ros__parameters:
     robot_name: "New Alessandro Bot"
     robot_id: 5

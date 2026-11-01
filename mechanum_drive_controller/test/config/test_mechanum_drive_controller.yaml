@@ -1,4 +1,4 @@
-mecanum_drive_controller:
+mechanum_drive_controller:
   ros__parameters:
     front_left_joint_name: front_left_wheel_joint # Name of a joint that controls a front left wheel.
     front_right_joint_name: front_right_wheel_joint # Name of a joint that controls a front right wheel.

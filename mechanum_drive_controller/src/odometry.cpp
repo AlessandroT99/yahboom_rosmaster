@@ -1,8 +1,8 @@
 /**
  * @file odometry.cpp
- * @brief Implementation of odometry calculations for mecanum drive robots
+ * @brief Implementation of odometry calculations for mechanum drive robots
  *
- * This implementation handles the unique kinematics of mecanum wheels to track
+ * This implementation handles the unique kinematics of mechanum wheels to track
  * the robot's position and velocity in 2D space, including holonomic movement.
  *
  * Forward Kinematics Equations (all angular velocities in radians/second):
@@ -20,9 +20,9 @@
  * @date November 18, 2024
  */
 
-#include "mecanum_drive_controller/odometry.hpp"
+#include "mechanum_drive_controller/odometry.hpp"
 
-namespace mecanum_drive_controller
+namespace mechanum_drive_controller
 {
 
 /**
@@ -142,7 +142,7 @@ bool Odometry::updateFromVelocity(
   const double L = wheel_base_ / 2.0;      // Distance to front/back wheels
   const double W = wheel_separation_ / 2.0; // Distance to left/right wheels
 
-  // Calculate robot velocity components using mecanum wheel kinematics
+  // Calculate robot velocity components using mechanum wheel kinematics
   // Each wheel contributes to motion in all directions based on its orientation
 
   // Forward/backward velocity (m/s)
@@ -313,4 +313,4 @@ void Odometry::resetAccumulators()
   angular_accumulator_ = RollingMeanAccumulator(velocity_rolling_window_size_);
 }
 
-}  // namespace mecanum_drive_controller
+}  // namespace mechanum_drive_controller

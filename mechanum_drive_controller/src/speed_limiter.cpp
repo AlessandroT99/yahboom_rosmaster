@@ -1,9 +1,9 @@
 /**
  * @file speed_limiter.cpp
- * @brief Implementation of velocity, acceleration, and jerk limits for mecanum drive robots.
+ * @brief Implementation of velocity, acceleration, and jerk limits for mechanum drive robots.
  *
  * This implements the speed limiting functionality for each velocity component
- * (x, y, angular) of a mecanum drive robot. It ensures smooth and safe motion by:
+ * (x, y, angular) of a mechanum drive robot. It ensures smooth and safe motion by:
  * - Limiting maximum and minimum velocities
  * - Controlling acceleration to prevent sudden speed changes
  * - Managing jerk (rate of acceleration change) for smooth motion
@@ -19,9 +19,9 @@
 
 #include <algorithm>
 #include <stdexcept>
-#include "mecanum_drive_controller/speed_limiter.hpp"
+#include "mechanum_drive_controller/speed_limiter.hpp"
 
-namespace mecanum_drive_controller
+namespace mechanum_drive_controller
 {
 
 /**
@@ -217,4 +217,4 @@ double SpeedLimiter::limit_jerk(double & v, double v0, double v1, double dt)
   return original_velocity != 0.0 ? v / original_velocity : 1.0;
 }
 
-}  // namespace mecanum_drive_controller
+}  // namespace mechanum_drive_controller

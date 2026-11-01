@@ -1,15 +1,15 @@
 /**
- * @file test_load_mecanum_drive_controller.cpp
- * @brief Basic test to verify that the mecanum drive controller loads correctly
+ * @file test_load_mechanum_drive_controller.cpp
+ * @brief Basic test to verify that the mechanum drive controller loads correctly
  *
- * This program tests if the mecanum drive controller can be loaded into the
+ * This program tests if the mechanum drive controller can be loaded into the
  * ROS 2 Control framework. It uses the minimal robot URDF for testing and
  * verifies that loading the controller does not throw any exceptions.
  *
  * Test Components:
  *     - Initializes ROS 2
  *     - Creates a controller manager
- *     - Attempts to load the mecanum drive controller
+ *     - Attempts to load the mechanum drive controller
  *     - Verifies no exceptions are thrown during loading
  *
  * @author Addison Sears-Collins
@@ -31,16 +31,16 @@
 #include "ros2_control_test_assets/descriptions.hpp"
 
 /**
- * @brief Test case to verify the mecanum drive controller can be loaded
+ * @brief Test case to verify the mechanum drive controller can be loaded
  *
  * This test performs the following steps:
  * 1. Initializes ROS 2
  * 2. Creates a single-threaded executor
  * 3. Sets up a controller manager with minimal robot URDF
- * 4. Attempts to load the mecanum drive controller
+ * 4. Attempts to load the mechanum drive controller
  * 5. Verifies no exceptions occur during loading
  */
-TEST(TestLoadMecanumDriveController, load_controller)
+TEST(TestLoadmechanumDriveController, load_controller)
 {
   // Create a single-threaded executor for running the controller
   std::shared_ptr<rclcpp::Executor> executor =
@@ -52,10 +52,10 @@ TEST(TestLoadMecanumDriveController, load_controller)
   
   // Set parameters before loading
   cm.set_parameter(
-    {"test_mecanum_drive_controller.type", "mecanum_drive_controller/MecanumDriveController"});
+    {"test_mechanum_drive_controller.type", "mechanum_drive_controller/mechanumDriveController"});
     
   // Use ASSERT_NE instead of ASSERT_NO_THROW
-  ASSERT_NE(cm.load_controller("test_mecanum_drive_controller"), nullptr);
+  ASSERT_NE(cm.load_controller("test_mechanum_drive_controller"), nullptr);
 }
 
 int main(int argc, char ** argv)

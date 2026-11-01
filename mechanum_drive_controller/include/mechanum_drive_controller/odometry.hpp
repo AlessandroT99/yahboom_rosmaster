@@ -1,17 +1,17 @@
 /**
  * @file odometry.hpp
- * @brief Odometry calculations for mecanum drive robots
+ * @brief Odometry calculations for mechanum drive robots
  *
- * This class handles odometry calculations for a mecanum drive robot,
- * taking into account the unique kinematics of mecanum wheels that allow
+ * This class handles odometry calculations for a mechanum drive robot,
+ * taking into account the unique kinematics of mechanum wheels that allow
  * for omnidirectional movement.
  *
  * @author Addison Sears-Collins
  * @date November 18, 2024
  */
 
-#ifndef MECANUM_DRIVE_CONTROLLER__ODOMETRY_HPP_
-#define MECANUM_DRIVE_CONTROLLER__ODOMETRY_HPP_
+#ifndef mechanum_DRIVE_CONTROLLER__ODOMETRY_HPP_
+#define mechanum_DRIVE_CONTROLLER__ODOMETRY_HPP_
 
 #include <cmath>
 #include "rclcpp/time.hpp"
@@ -23,13 +23,13 @@
 #include "rcppmath/rolling_mean_accumulator.hpp"
 #endif
 
-namespace mecanum_drive_controller
+namespace mechanum_drive_controller
 {
 class Odometry
 {
 public:
   /**
-   * @brief Constructor for mecanum drive odometry
+   * @brief Constructor for mechanum drive odometry
    * @param velocity_rolling_window_size Window size for velocity measurements
    */
   explicit Odometry(size_t velocity_rolling_window_size = 10);
@@ -176,5 +176,5 @@ private:
   RollingMeanAccumulator angular_accumulator_;
 };
 
-}  // namespace mecanum_drive_controller
-#endif  // MECANUM_DRIVE_CONTROLLER__ODOMETRY_HPP_
+}  // namespace mechanum_drive_controller
+#endif  // mechanum_DRIVE_CONTROLLER__ODOMETRY_HPP_

@@ -1,14 +1,14 @@
 /**
- * @file square_mecanum_controller.cpp
- * @brief Controls a mecanum wheeled robot to move in a square pattern
+ * @file square_mechanum_controller.cpp
+ * @brief Controls a mechanum wheeled robot to move in a square pattern
  *
  * This program creates a ROS 2 node that publishes velocity commands to make a
- * mecanum wheeled robot move in a square pattern. It takes advantage of the
- * omnidirectional capabilities of mecanum wheels to move in straight lines
+ * mechanum wheeled robot move in a square pattern. It takes advantage of the
+ * omnidirectional capabilities of mechanum wheels to move in straight lines
  * along both X and Y axes.
  *
  * Publishing Topics:
- *     /mecanum_drive_controller/cmd_vel (geometry_msgs/TwistStamped):
+ *     /mechanum_drive_controller/cmd_vel (geometry_msgs/TwistStamped):
  *         Velocity commands for the robot's motion
  *
  * @author Addison Sears-Collins
@@ -30,7 +30,7 @@ public:
     {
         // Create publisher for velocity commands
         publisher_ = this->create_publisher<geometry_msgs::msg::TwistStamped>(
-            "/mecanum_drive_controller/cmd_vel", 10);
+            "/mechanum_drive_controller/cmd_vel", 10);
 
         // Create timer that calls our control function every 200ms
         timer_ = this->create_wall_timer(
